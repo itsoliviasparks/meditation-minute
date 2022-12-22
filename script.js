@@ -17,7 +17,17 @@
             //add quote to page
                 //add author to page
 
+
+    //ZEN API
+    //https://premium.zenquotes.io/zenquotes-documentation/
+    const url = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/quotes/`
+    fetch(url)
+    .then((response) => {
+        console.log(response.json());
+    })
+
     //Inspiration Quotes
+    //https://api.goprogram.ai/inspiration/docs/
     fetch(`https://api.goprogram.ai/inspiration`)
     .then((data) => {
         return data.json();
@@ -27,6 +37,7 @@
     })
 
     //MET Museum
+    //https://metmuseum.github.io
     fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/47333')
     .then((response) => {
       return response.json();
