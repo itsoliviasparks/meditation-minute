@@ -1,0 +1,23 @@
+@use "var" as *;
+
+html {
+    font-size: 62.5%;
+    background-color: $dark-background-color;
+}
+
+.wrapper {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1,
+button {
+    font-family: $header-font;
+    font-size: 5.5rem;
+    text-align: center;
+    color: $font-color;
+    span {
+        display: block;
+    }
+}

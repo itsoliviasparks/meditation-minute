@@ -225,3 +225,65 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+html {
+  font-size: 62.5%;
+  background-color: #d3d5c9;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1,
+button {
+  font-family: "Permanent Marker", Cursive;
+  font-size: 5.5rem;
+  text-align: center;
+  color: #18647a;
+}
+h1 span,
+button span {
+  display: block;
+}
+
+button {
+  font-family: "Permanent Marker", Cursive;
+  font-size: 5.5rem;
+  background-color: transparent;
+  color: #6db8bb;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+button:hover, button:focus {
+  color: #18647a;
+}
+
+.h1-background {
+  background-color: #e6f1e6;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30vh;
+  width: 100%;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+button:hover, button:focus {
+  color: #18647a;
+}

@@ -20,8 +20,9 @@
 
     //ZEN API
     //https://premium.zenquotes.io/zenquotes-documentation/
-    const url = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/quotes/`
-    fetch(url)
+    const url50Random = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/quotes/`
+    const url1Random = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/`
+    fetch(url1Random)
     .then((response) => {
         console.log(response.json());
     })

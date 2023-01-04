@@ -1,0 +1,34 @@
+@use "var" as *;
+
+button {
+    font-family: $header-font;
+    font-size: 5.5rem;
+    background-color: transparent;
+    color: $pop-color;
+    border: none;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        color: $font-color;
+    }
+}
+
+.h1-background {
+    background-color: $background-color;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30vh;
+    width: 100%;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        color: $font-color;
+    }
+}
