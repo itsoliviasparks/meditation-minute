@@ -232,9 +232,25 @@ html {
 }
 
 .wrapper {
-  width: 85%;
+  width: 70%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10vh auto;
+  padding: 40px 25px;
+  background-color: #e6f1e6;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 h1,
@@ -245,11 +261,29 @@ button {
   text-align: center;
   color: #18647a;
   width: auto;
+  margin: 0;
 }
 h1 span,
 h2 span,
 button span {
   display: block;
+}
+
+p {
+  font-family: "Overpass", Sans-Serif;
+  font-size: 1.5rem;
+}
+
+footer p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #959593;
+}
+footer p a {
+  color: #959593;
+}
+footer p a:hover, footer p a:focus {
+  color: black;
 }
 
 button {
@@ -265,22 +299,6 @@ button:hover, button:focus {
   color: #18647a;
 }
 
-.h1-background {
-  background-color: #e6f1e6;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 30vh;
-  width: 100%;
-}
-
 button {
   border: none;
   background-color: transparent;
@@ -289,4 +307,40 @@ button {
 }
 button:hover, button:focus {
   color: #18647a;
+}
+
+footer {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+}
+
+header {
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+img {
+  width: 100%;
+  position: relative;
+  margin-top: 35px;
+  display: block;
+}
+
+.quote {
+  position: absolute;
+  z-index: 1;
+}
+
+.img-credit {
+  width: 80%;
+  z-index: 2;
+  background-color: #959593;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  margin-top: -10px;
+  text-align: center;
 }

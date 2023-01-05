@@ -6,9 +6,16 @@ html {
 }
 
 .wrapper {
-    width: 85%;
+    width: 70%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 10vh auto;
+    padding: 40px 25px;
+    background-color: $background-color;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1,
@@ -19,9 +26,26 @@ button {
     text-align: center;
     color: $font-color;
     width: auto;
+    margin: 0;
     span {
         display: block;
     }
 }
 
+p {
+    font-family: $body-font;
+    font-size: 1.5rem;
+}
 
+footer p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: $artist-background-color;
+    a {
+        color: $artist-background-color;
+        &:hover,
+        &:focus {
+            color: black;
+        }
+    }
+}

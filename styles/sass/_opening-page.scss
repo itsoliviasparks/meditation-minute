@@ -13,16 +13,6 @@ button {
     }
 }
 
-.h1-background {
-    background-color: $background-color;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30vh;
-    width: 100%;
-}
-
 button {
     border: none;
     background-color: transparent;
@@ -31,4 +21,10 @@ button {
     &:focus {
         color: $font-color;
     }
+}
+
+footer {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
 }

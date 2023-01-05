@@ -1,0 +1,28 @@
+@use "var" as *;
+
+header{
+    width: 35%;
+    display: flex;
+    justify-content: space-around;
+}
+
+img {
+    width: 100%;
+    position: relative;
+    margin-top: 35px;
+    display: block;
+}
+
+.quote {
+    position: absolute;
+    z-index: 1;
+}
+
+.img-credit {
+    width: 80%;
+    z-index: 2;
+    background-color: $artist-background-color;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    margin-top: -10px;
+    text-align: center;
+}
