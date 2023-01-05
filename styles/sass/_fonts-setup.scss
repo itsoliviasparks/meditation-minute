@@ -12,12 +12,16 @@ html {
 }
 
 h1,
+h2,
 button {
     font-family: $header-font;
     font-size: 5.5rem;
     text-align: center;
     color: $font-color;
+    width: auto;
     span {
         display: block;
     }
 }
+
+

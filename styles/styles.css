@@ -238,13 +238,16 @@ html {
 }
 
 h1,
+h2,
 button {
   font-family: "Permanent Marker", Cursive;
   font-size: 5.5rem;
   text-align: center;
   color: #18647a;
+  width: auto;
 }
 h1 span,
+h2 span,
 button span {
   display: block;
 }
