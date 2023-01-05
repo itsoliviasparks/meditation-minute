@@ -8,15 +8,26 @@ header{
 
 img {
     width: 100%;
-    position: relative;
     margin-top: 35px;
     display: block;
 }
 
-.quote {
-    position: absolute;
-    z-index: 1;
+.quote-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .quote {
+        position: absolute;
+        top: 200px;
+        text-align: center;
+        width: 100%;
+        max-width: 700px;
+        z-index: 1;
+        background-color: $transparent-background-color;
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
 }
+
 
 .img-credit {
     width: 80%;

@@ -37,6 +37,18 @@ p {
     font-size: 1.5rem;
 }
 
+.quote {
+    p:nth-child(1){
+        font-size: 3rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+    p:nth-child(2) {
+        font-size: 2rem;
+    }
+}
+
+
 footer p {
     font-size: 1.2rem;
     font-style: italic;

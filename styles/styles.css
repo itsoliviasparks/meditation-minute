@@ -274,6 +274,15 @@ p {
   font-size: 1.5rem;
 }
 
+.quote p:nth-child(1) {
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.quote p:nth-child(2) {
+  font-size: 2rem;
+}
+
 footer p {
   font-size: 1.2rem;
   font-style: italic;
@@ -326,14 +335,28 @@ header {
 
 img {
   width: 100%;
-  position: relative;
   margin-top: 35px;
   display: block;
 }
 
-.quote {
+.quote-img {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.quote-img .quote {
   position: absolute;
+  top: 200px;
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
   z-index: 1;
+  background-color: rgba(230, 241, 230, 0.6);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .img-credit {
