@@ -225,3 +225,176 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+html {
+  font-size: 62.5%;
+  background-color: #d3d5c9;
+}
+
+h1,
+h2,
+button {
+  margin: 0;
+  color: #18647a;
+  font-family: "Permanent Marker", Cursive;
+  font-size: 5.5rem;
+  text-align: center;
+}
+h1 span,
+h2 span,
+button span {
+  display: block;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  color: #6db8bb;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+button:hover, button:focus {
+  color: #18647a;
+}
+
+p {
+  color: #1c1c1c;
+  font-family: "Overpass", Sans-Serif;
+  font-size: 1.5rem;
+}
+
+.quote p:nth-child(1) {
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 0;
+}
+.quote p:nth-child(2) {
+  font-size: 2rem;
+}
+
+footer p {
+  color: #959593;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+footer p a {
+  color: #959593;
+}
+footer p a:hover, footer p a:focus {
+  color: #1c1c1c;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 10vh;
+  padding: 40px 25px;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: #e6f1e6;
+}
+
+footer {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 35%;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  margin-top: 35px;
+}
+
+.quote-img {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.quote-img .quote {
+  position: absolute;
+  z-index: 1;
+  top: 15vh;
+  width: 90%;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: rgba(230, 241, 230, 0.6);
+  text-align: center;
+}
+
+.img-credit {
+  z-index: 2;
+  width: 80%;
+  margin-top: -10px;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: #959593;
+  text-align: center;
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  h1,
+h2,
+button {
+    font-size: 5rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  .quote p:nth-child(1) {
+    font-size: 2rem;
+  }
+  .quote p:nth-child(2) {
+    font-size: 1.5rem;
+  }
+  .quote-img .quote {
+    top: 10vh;
+  }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  h1,
+h2,
+button {
+    font-size: 4.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .wrapper {
+    width: 85%;
+  }
+  .quote p:nth-child(1) {
+    font-size: 1.5rem;
+  }
+  .quote p:nth-child(2) {
+    font-size: 1rem;
+  }
+}

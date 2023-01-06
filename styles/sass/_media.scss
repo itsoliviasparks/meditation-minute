@@ -1,0 +1,31 @@
+@use "var" as *;
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+    h1,
+    h2,
+    button {
+    font-size: 5rem;
+    }
+    p {font-size: 1.2rem;}
+    .quote {
+        p:nth-child(1){font-size: 2rem;}
+        p:nth-child(2) {font-size: 1.5rem;}
+    }
+    .quote-img  .quote {top: 10vh;}
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    h1,
+    h2,
+    button {
+    font-size: 4.5rem;
+    }
+    p {font-size: 1rem;}
+    .wrapper {width: 85%;}
+    .quote {
+        p:nth-child(1){font-size: 1.5rem;}
+        p:nth-child(2) {font-size: 1rem;}
+    }
+}

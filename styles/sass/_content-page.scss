@@ -1,0 +1,38 @@
+@use "var" as *;
+
+header{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    margin-top: 35px;
+}
+
+.quote-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .quote {
+        position: absolute;
+        z-index: 1;
+        top: 15vh;
+        width: 90%;
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        background-color: $quote-background;
+        text-align: center;
+    }
+}
+
+.img-credit {
+    z-index: 2;
+    width: 80%;
+    margin-top: -10px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color: $artist-background;
+    text-align: center;
+}

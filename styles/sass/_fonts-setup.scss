@@ -1,0 +1,61 @@
+@use "var" as *;
+
+html {
+    font-size: 62.5%;
+    background-color: $main-background;
+}
+
+h1,
+h2,
+button {
+    margin: 0;
+    color: $font-color;
+    font-family: $header-font;
+    font-size: 5.5rem;
+    text-align: center;
+    span {
+        display: block;
+    }
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    color: $pop-color;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        color: $font-color;
+    }
+}
+
+p {
+    color: $black;
+    font-family: $body-font;
+    font-size: 1.5rem;
+}
+
+.quote {
+    p:nth-child(1){
+        font-size: 3rem;
+        font-weight: 600;
+        font-style: italic;
+        margin-bottom: 0;
+    }
+    p:nth-child(2) {
+        font-size: 2rem;
+    }
+}
+
+footer p {
+    color: $artist-background;
+    font-size: 1.2rem;
+    font-style: italic;
+    a {
+        color: $artist-background;
+        &:hover,
+        &:focus {
+            color: $black;
+        }
+    }
+}
