@@ -1,5 +1,5 @@
-//on page load
-    // API call to MET
+//on page load 
+    // API call to Rjiks
         //save random art image in variable
         //save that image's title & artist in separate variable
     //API call to quotes
@@ -17,32 +17,73 @@
             //add quote to page
                 //add author to page
 
+const meditationMinute = {}; 
+// console.log(meditationMinute);
 
-    //ZEN API
-    //https://premium.zenquotes.io/zenquotes-documentation/
-    const url50Random = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/quotes/`
-    const url1Random = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/`
-    fetch(url1Random)
+//API call to quotes
+meditationMinute.getQuote = () => {
+    const url = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/`
+    fetch(url)
     .then((response) => {
-        console.log(response.json());
+        return response.json();
+    }).then((jsonData) => {
+        //save random quote in variable
+        meditationMinute.quoteContent = jsonData[0].q;
+        //save quote author in variable   
+        meditationMinute.quoteAuthor = jsonData[0].a;
+        console.log(meditationMinute.quoteContent);
+        console.log(meditationMinute.quoteAuthor);
+    })
+}
+
+//API call to Rjiks Art Images
+meditationMinute.getArt = () => {
+    const url = new URL('https://www.rijksmuseum.nl/api/en/collection/');
+    const apiKey = 'V8yTMUkv';
+    url.search = new URLSearchParams({
+    key: apiKey,
+    culture: 'en', 
+    imgonly: true,
+    toppieces: true,
+    p: 100,
+    ps: 100,
     })
 
-    //Inspiration Quotes
-    //https://api.goprogram.ai/inspiration/docs/
-    fetch(`https://api.goprogram.ai/inspiration`)
-    .then((data) => {
-        return data.json();
+    fetch(url)
+    .then(function(response) {
+        return response.json();
     })
-    .then((jsonData) => {
-        console.log(jsonData)
-    })
+    .then(function(jsonData) {
+        console.log(jsonData);
+        const artArr = jsonData.artObjects;
+        const randomArt = meditationMinute.getRandomItemInArr(artArr);
+        console.log(randomArt);
+        //save random art image in variable
+        meditationMinute.artImage = randomArt.webImage.url;
+        console.log(meditationMinute.artImage);
+        //save that image's title & artist in separate variable
 
-    //MET Museum
-    //https://metmuseum.github.io
-    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/47333')
-    .then((response) => {
-      return response.json();
-    }).then((jsonResponse) => {
-       console.log(jsonResponse);
-       console.log(jsonResponse.objectURL)
+        // Title
+       meditationMinute.artTitle = randomArt.title;
+       console.log(meditationMinute.artTitle);
+
+        // Artist
+        meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+        console.log(meditationMinute.artMaker);
     })
+}
+
+meditationMinute.getRandomItemInArr = (arr) => {
+    const randomNumber = Math.floor(Math.random() * arr.length)
+    return arr[randomNumber];
+}
+
+// console.log(meditationMinute);
+meditationMinute.init = () => {
+    // console.log('it worked');
+    // meditationMinute.getQuote();
+    meditationMinute.getArt();
+};
+
+meditationMinute.init();
+
