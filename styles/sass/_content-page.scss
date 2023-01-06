@@ -1,15 +1,16 @@
 @use "var" as *;
 
 header{
-    width: 35%;
     display: flex;
     justify-content: space-around;
+    width: 35%;
 }
 
 img {
-    width: 100%;
-    margin-top: 35px;
     display: block;
+    width: 100%;
+    max-height: 60vh;
+    margin-top: 35px;
 }
 
 .quote-img {
@@ -18,22 +19,20 @@ img {
     justify-content: center;
     .quote {
         position: absolute;
-        top: 200px;
-        text-align: center;
-        width: 100%;
-        max-width: 700px;
         z-index: 1;
-        background-color: $transparent-background-color;
+        top: 15vh;
+        width: 90%;
         border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        background-color: $quote-background;
+        text-align: center;
     }
 }
 
-
 .img-credit {
-    width: 80%;
     z-index: 2;
-    background-color: $artist-background-color;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    width: 80%;
     margin-top: -10px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color: $artist-background;
     text-align: center;
 }

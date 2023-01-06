@@ -1,26 +1,17 @@
 @use "var" as *;
 
-button {
-    font-family: $header-font;
-    font-size: 5.5rem;
-    background-color: transparent;
-    color: $pop-color;
-    border: none;
-    transition: 0.3s;
-    &:hover,
-    &:focus {
-        color: $font-color;
-    }
-}
-
-button {
-    border: none;
-    background-color: transparent;
-    transition: 0.3s;
-    &:hover,
-    &:focus {
-        color: $font-color;
-    }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10vh;
+    padding: 40px 25px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color: $content-background;
 }
 
 footer {

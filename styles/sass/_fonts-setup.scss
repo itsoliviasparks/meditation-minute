@@ -2,37 +2,35 @@
 
 html {
     font-size: 62.5%;
-    background-color: $dark-background-color;
-}
-
-.wrapper {
-    width: 70%;
-    max-width: 1200px;
-    margin: 10vh auto;
-    padding: 40px 25px;
-    background-color: $background-color;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: $main-background;
 }
 
 h1,
 h2,
 button {
+    margin: 0;
+    color: $font-color;
     font-family: $header-font;
     font-size: 5.5rem;
     text-align: center;
-    color: $font-color;
-    width: auto;
-    margin: 0;
     span {
         display: block;
     }
 }
 
+button {
+    border: none;
+    background-color: transparent;
+    color: $pop-color;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        color: $font-color;
+    }
+}
+
 p {
+    color: $black;
     font-family: $body-font;
     font-size: 1.5rem;
 }
@@ -42,22 +40,22 @@ p {
         font-size: 3rem;
         font-weight: 600;
         font-style: italic;
+        margin-bottom: 0;
     }
     p:nth-child(2) {
         font-size: 2rem;
     }
 }
 
-
 footer p {
+    color: $artist-background;
     font-size: 1.2rem;
     font-style: italic;
-    color: $artist-background-color;
     a {
-        color: $artist-background-color;
+        color: $artist-background;
         &:hover,
         &:focus {
-            color: black;
+            color: $black;
         }
     }
 }
