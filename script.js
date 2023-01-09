@@ -38,7 +38,7 @@ meditationMinute.getQuote = () => {
         //save quote author in variable   
         meditationMinute.quoteAuthor = jsonData[0].a;
         //update the quote content
-        meditationMinute.updateQuoteContent();
+        // meditationMinute.updateQuoteContent();
     })
 };
 
@@ -78,7 +78,7 @@ meditationMinute.getArt = () => {
        meditationMinute.artTitle = randomArt.title;
         // Artist
         meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-        meditationMinute.updateArtContent();
+        // meditationMinute.updateArtContent();
     })
 };
 
@@ -95,11 +95,74 @@ meditationMinute.getRandomItemInArr = (arr) => {
     return arr[randomNumber];
 };
 
+
+// Timer 
+meditationMinute.timer = () => {
+
+}
+// Have event listener on the home page button 
+meditationMinute.homeButtonListener = () => {
+    const homeButton = document.querySelector('.home');
+    // When the button gets clicked 
+    homeButton.addEventListener('click', () => {
+            // update the content of the page 
+            meditationMinute.updateDisplayedContent();
+            meditationMinute.updateArtContent();
+            meditationMinute.updateQuoteContent();
+            meditationMinute.restart();
+
+            // The update will trigger the timer 
+        
+    })
+}
+
+meditationMinute.updateDisplayedContent = () => {
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = `
+    <header>
+			<h2>1:00</h2>
+			<button class="restart">
+				<i class="fa-solid fa-clock-rotate-left"></i>
+			</button>
+		</header>
+		<section class="quote-img">
+			<div class="quote-author">
+				<p class="quote"></p>
+				<p class="author"></p>
+			</div>
+			<div class="art-img"></div>
+		</section>
+		<div class="img-credit">
+		</div> 
+    `
+    meditationMinute.timer();
+}
+
+meditationMinute.currentTimerSeconds = 60; 
+
+meditationMinute.timer = () => {
+    currentTimerSeconds--; 
+    const timer = document.querySelector('h2');
+
+    timer.innerHTML = String(meditationMinute.currentTimerSeconds);
+    if (meditationMinute.currentTimerSeconds > 0) {
+        setTimeout(countdown, 1000);
+    }
+    setTimeout(countdown, 1000);
+}
+
+    
+    // start with 1 min
+    // Let the timer go down by one second a time 
+    // Timer stops when timer hits 0; 
+
+
+
+
 meditationMinute.init = () => {
+    meditationMinute.homeButtonListener();
     meditationMinute.getQuote();
-    meditationMinute.getArt();
-    meditationMinute.restart();
-    //we need a timer function
+    meditationMinute.getArt();    //we need a timer function
     // stretch goal of colors
     //throwing and catching errors
 };
