@@ -18,9 +18,15 @@
                 //add author to page
 
 const meditationMinute = {}; 
-// console.log(meditationMinute);
 
-//API call to quotes
+meditationMinute.updateQuoteContent = () => {
+    const quoteElement = document.querySelector(".quote");
+    const authorElement = document.querySelector(".author");
+    quoteElement.innerHTML = `"${meditationMinute.quoteContent}"`;
+    authorElement.innerHTML = `- ${meditationMinute.quoteAuthor}`;
+};
+
+//API call to Zen Quotes
 meditationMinute.getQuote = () => {
     const url = `https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/`
     fetch(url)
@@ -31,10 +37,22 @@ meditationMinute.getQuote = () => {
         meditationMinute.quoteContent = jsonData[0].q;
         //save quote author in variable   
         meditationMinute.quoteAuthor = jsonData[0].a;
-        console.log(meditationMinute.quoteContent);
-        console.log(meditationMinute.quoteAuthor);
+        //update the quote content
+        meditationMinute.updateQuoteContent();
     })
-}
+};
+
+meditationMinute.updateArtContent = () => {
+    const artImgElement = document.querySelector(".art-img");
+    const imgCreditElement = document.querySelector(".img-credit");
+    artImgElement.innerHTML = `
+    <img src="${meditationMinute.artImage}" alt="${meditationMinute.artTitle}">
+    `;
+    imgCreditElement.innerHTML = `
+    <p><span>${meditationMinute.artTitle}</span> by ${meditationMinute.artMaker}</p>
+    `;
+};
+
 
 //API call to Rjiks Art Images
 meditationMinute.getArt = () => {
@@ -48,41 +66,36 @@ meditationMinute.getArt = () => {
     p: 100,
     ps: 100,
     })
-
     fetch(url)
     .then(function(response) {
         return response.json();
     })
     .then(function(jsonData) {
-        console.log(jsonData);
         const artArr = jsonData.artObjects;
         const randomArt = meditationMinute.getRandomItemInArr(artArr);
-        console.log(randomArt);
         //save random art image in variable
         meditationMinute.artImage = randomArt.webImage.url;
-        console.log(meditationMinute.artImage);
         //save that image's title & artist in separate variable
-
         // Title
        meditationMinute.artTitle = randomArt.title;
-       console.log(meditationMinute.artTitle);
-
         // Artist
         meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-        console.log(meditationMinute.artMaker);
+        meditationMinute.updateArtContent();
     })
-}
+};
 
 meditationMinute.getRandomItemInArr = (arr) => {
     const randomNumber = Math.floor(Math.random() * arr.length)
     return arr[randomNumber];
-}
+};
 
-// console.log(meditationMinute);
 meditationMinute.init = () => {
-    // console.log('it worked');
-    // meditationMinute.getQuote();
+    meditationMinute.getQuote();
     meditationMinute.getArt();
+    //we need a timer function
+    //we need to reset
+    // stretch goal of colors
+    //throwing and catching errors
 };
 
 meditationMinute.init();

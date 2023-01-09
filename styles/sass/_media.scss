@@ -8,11 +8,11 @@
     font-size: 5rem;
     }
     p {font-size: 1.2rem;}
-    .quote {
+    .quote-author {
         p:nth-child(1){font-size: 2rem;}
         p:nth-child(2) {font-size: 1.5rem;}
     }
-    .quote-img  .quote {top: 10vh;}
+    .quote-img .quote-author {top: 10vh;}
 }
 
 /* Landscape phones and down */
@@ -24,7 +24,7 @@
     }
     p {font-size: 1rem;}
     .wrapper {width: 85%;}
-    .quote {
+    .quote-author {
         p:nth-child(1){font-size: 1.5rem;}
         p:nth-child(2) {font-size: 1rem;}
     }
