@@ -56,15 +56,13 @@ meditationMinute.updateArtContent = () => {
 
 //API call to Rjiks Art Images
 meditationMinute.getArt = () => {
-    const url = new URL('https://www.rijksmuseum.nl/api/en/collection/');
-    const apiKey = 'V8yTMUkv';
+    const url = new URL('https://www.rijksmuseum.nl/api/en/collection');
+    const apiKey = 'aw5uplA6';
     url.search = new URLSearchParams({
     key: apiKey,
-    culture: 'en', 
+    p: 1000,
     imgonly: true,
-    toppieces: true,
-    p: 100,
-    ps: 100,
+    q: "painting",
     })
     fetch(url)
     .then(function(response) {
@@ -84,6 +82,14 @@ meditationMinute.getArt = () => {
     })
 };
 
+meditationMinute.restart = () => {
+    const restartButton = document.querySelector('.restart');
+    restartButton.addEventListener("click", () => {
+        window.location.reload(); 
+    });
+
+};
+
 meditationMinute.getRandomItemInArr = (arr) => {
     const randomNumber = Math.floor(Math.random() * arr.length)
     return arr[randomNumber];
@@ -92,8 +98,8 @@ meditationMinute.getRandomItemInArr = (arr) => {
 meditationMinute.init = () => {
     meditationMinute.getQuote();
     meditationMinute.getArt();
+    meditationMinute.restart();
     //we need a timer function
-    //we need to reset
     // stretch goal of colors
     //throwing and catching errors
 };
