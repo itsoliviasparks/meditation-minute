@@ -97,9 +97,9 @@ meditationMinute.getRandomItemInArr = (arr) => {
 
 
 // Timer 
-meditationMinute.timer = () => {
+// meditationMinute.timer = () => {
 
-}
+// }
 // Have event listener on the home page button 
 meditationMinute.homeButtonListener = () => {
     const homeButton = document.querySelector('.home');
@@ -112,7 +112,6 @@ meditationMinute.homeButtonListener = () => {
             meditationMinute.restart();
 
             // The update will trigger the timer 
-        
     })
 }
 
@@ -134,35 +133,47 @@ meditationMinute.updateDisplayedContent = () => {
 		</section>
 		<div class="img-credit">
 		</div> 
-    `
-    meditationMinute.timer();
+        `
+        meditationMinute.timer();
 }
 
-meditationMinute.currentTimerSeconds = 60; 
+
+// On content page load - the timer starts
+// timer starts at 1:00 minute 
+// Every second - the timer count goes down 
+//The current time gets displayed on screen 
+//After the display - the timer count goes down again 
+// When count hits 0 - the timer stops 
+// The reset button can refresh the timer back to its original state - 1:00 minute 
+
 
 meditationMinute.timer = () => {
-    currentTimerSeconds--; 
-    const timer = document.querySelector('h2');
-
-    timer.innerHTML = String(meditationMinute.currentTimerSeconds);
-    if (meditationMinute.currentTimerSeconds > 0) {
-        setTimeout(countdown, 1000);
-    }
-    setTimeout(countdown, 1000);
+    let currentTime = 3;
+    const intervalCountdown = setInterval( function(){
+        if (currentTime <= 3){
+            currentTime--;
+            if (currentTime > 0) {
+                console.log(currentTime);
+            } else {
+                console.log('time is up');
+                clearInterval(intervalCountdown);
+            }
+        }
+    },1000)
 }
 
-    
-    // start with 1 min
-    // Let the timer go down by one second a time 
-    // Timer stops when timer hits 0; 
-
+meditationMinute.timerDisplay = () => {
+    // const h2Element = document.querySelector('h2');
+    console.log('it works')
+}
 
 
 
 meditationMinute.init = () => {
     meditationMinute.homeButtonListener();
     meditationMinute.getQuote();
-    meditationMinute.getArt();    //we need a timer function
+    meditationMinute.getArt();    
+    //we need a timer function
     // stretch goal of colors
     //throwing and catching errors
 };
