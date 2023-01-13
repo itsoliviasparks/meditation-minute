@@ -104,18 +104,26 @@ meditationMinute.getArt = () => {
     const apiKey = "aw5uplA6";
     url.search = new URLSearchParams({
     key: apiKey,
-    p: 1000,
+    p: 100,
+    ps: 100,
     imgonly: true,
     q: "painting",
+    toppieces: false,
     })
     
     async function getFromAPI() {
-        const respo = await fetch(url);
-        const artArr = await respo.json();
-        const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
-        meditationMinute.artImage = randomArt.webImage.url;
-        meditationMinute.artTitle = randomArt.title;
-        meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+        try {
+            const respo = await fetch(url);
+            const artArr = await respo.json();
+            const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
+            meditationMinute.artImage = randomArt.webImage.url;
+            meditationMinute.artTitle = randomArt.title;
+            meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+        } catch {
+            meditationMinute.artImage = "https://sep.yimg.com/ty/cdn/madisonartshop/most-famous-paintings-2.jpg?t=1660737943&";
+            meditationMinute.artTitle = "Vincent Van Gogh";
+            meditationMinute.artMaker = "The Starry Night";
+        }
     }
     getFromAPI();
 };
@@ -123,12 +131,16 @@ meditationMinute.getArt = () => {
 //API call to Zen Quotes
 meditationMinute.getQuote = () => {
     const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
-
     async function getFromAPI() {
-        const respo = await fetch(url);
-        const quote = await respo.json();
-        meditationMinute.quoteContent = quote[0].q;
-        meditationMinute.quoteAuthor = quote[0].a;
+        try {
+            const respo = await fetch(url);
+            const quote = await respo.json();
+            meditationMinute.quoteContent = quote[0].q;
+            meditationMinute.quoteAuthor = quote[0].a;
+        } catch {
+            meditationMinute.quoteContent = "Beat the drum inside the house to spare the neighbors.";
+            meditationMinute.quoteAuthor = "Chinese Proverb";
+        }
     }
     getFromAPI();
 }
