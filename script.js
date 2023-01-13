@@ -149,22 +149,23 @@ meditationMinute.updateDisplayedContent = () => {
 
 meditationMinute.timer = () => {
     let currentTime = 3;
-    const intervalCountdown = setInterval( function(){
+    setInterval( function(){
         if (currentTime <= 3){
             currentTime--;
             if (currentTime > 0) {
-                console.log(currentTime);
+                // console.log(currentTime);
+                meditationMinute.timerDisplay(currentTime);
             } else {
-                console.log('time is up');
-                clearInterval(intervalCountdown);
+                window.location.reload(); 
             }
         }
     },1000)
 }
 
-meditationMinute.timerDisplay = () => {
-    // const h2Element = document.querySelector('h2');
-    console.log('it works')
+meditationMinute.timerDisplay = (currentTime) => {
+     const h2Element = document.querySelector('h2');
+     h2Element.innerHTML = `00:${currentTime}`;
+    // console.log('it works')
 }
 
 
