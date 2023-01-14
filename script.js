@@ -80,20 +80,23 @@ meditationMinute.updateDisplayedContent = () => {
     const mainElement = document.querySelector("main");
     mainElement.innerHTML = `
     <header>
-			<h2>1:00</h2>
-			<button class="restart">
-				<i class="fa-solid fa-clock-rotate-left"></i>
-			</button>
-		</header>
-		<section class="quote-img">
-			<div class="quote-author">
-				<p class="quote"></p>
-				<p class="author"></p>
-			</div>
-			<div class="art-img"></div>
-		</section>
-		<div class="img-credit">
-		</div> 
+        <h2>1:00</h2>
+        <button class="restart">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+        </button>
+    </header>
+    <section class="quote-img">
+        <div class="quote-author">
+            <p class="quote">"Beat the drum inside the house to spare the neighbors."</p>
+            <p class="author">- Chinese Proverb</p>
+        </div>
+        <div class="art-img">
+            <img src="./assets/starry-night.jpg" alt="Starry Night">
+        </div>
+    </section>
+    <div class="img-credit">
+        <p><span>Starry Night</span>Vincent Van Gogh</p>
+    </div> 
         `
         meditationMinute.timer();
 }
@@ -107,23 +110,15 @@ meditationMinute.getArt = () => {
     p: 100,
     ps: 100,
     imgonly: true,
-    q: "painting",
-    toppieces: false,
     })
     
     async function getFromAPI() {
-        try {
             const respo = await fetch(url);
             const artArr = await respo.json();
             const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
             meditationMinute.artImage = randomArt.webImage.url;
             meditationMinute.artTitle = randomArt.title;
             meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-        } catch {
-            meditationMinute.artImage = "https://sep.yimg.com/ty/cdn/madisonartshop/most-famous-paintings-2.jpg?t=1660737943&";
-            meditationMinute.artTitle = "Vincent Van Gogh";
-            meditationMinute.artMaker = "The Starry Night";
-        }
     }
     getFromAPI();
 };
@@ -132,15 +127,10 @@ meditationMinute.getArt = () => {
 meditationMinute.getQuote = () => {
     const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
     async function getFromAPI() {
-        try {
             const respo = await fetch(url);
             const quote = await respo.json();
             meditationMinute.quoteContent = quote[0].q;
             meditationMinute.quoteAuthor = quote[0].a;
-        } catch {
-            meditationMinute.quoteContent = "Beat the drum inside the house to spare the neighbors.";
-            meditationMinute.quoteAuthor = "Chinese Proverb";
-        }
     }
     getFromAPI();
 }
@@ -148,10 +138,12 @@ meditationMinute.getQuote = () => {
 meditationMinute.homeButtonListener = () => {
     const homeButton = document.querySelector(".home");
     homeButton.addEventListener("click", () => {
-        meditationMinute.updateDisplayedContent();
-        meditationMinute.updateArtContent();
-        meditationMinute.updateQuoteContent();
-        meditationMinute.restart();
+        setTimeout(function(){
+            meditationMinute.updateDisplayedContent();
+            meditationMinute.updateArtContent();
+            meditationMinute.updateQuoteContent();
+            meditationMinute.restart();
+        }, 1000);
     })
 }
 
