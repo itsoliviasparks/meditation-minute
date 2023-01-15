@@ -58,14 +58,8 @@ meditationMinute.updateQuoteContent = () => {
 };
 
 meditationMinute.timerDisplay = (currentTime) => {
-    // const h2Element = document.querySelector("h2");
-    // if (currentTime <= 9) {
-    //     h2Element.innerHTML = `00:0${currentTime}`;
-    // } else {
-    //     h2Element.innerHTML = `00:${currentTime}`;
-    // }
     const h2Element = document.querySelector("h2");
-    if (currentTime.toString().length == 1) {
+    if (currentTime <= 9) {
         h2Element.innerHTML = `00:0${currentTime}`;
     } else {
         h2Element.innerHTML = `00:${currentTime}`;
