@@ -32,37 +32,11 @@ meditationMinute.getRandomItemInArr = (arr) => {
     return arr[randomNumber];
 };
 
-meditationMinute.timerDisplay = (currentTime) => {
-     const h2Element = document.querySelector("h2");
-     h2Element.innerHTML = `00:${currentTime}`;
-}
-
-meditationMinute.timer = () => {
-    let currentTime = 60;
-    setInterval( function(){
-        if (currentTime <= 60){
-            currentTime--;
-            if (currentTime > 0) {
-                meditationMinute.timerDisplay(currentTime);
-            } else {
-                window.location.reload(); 
-            }
-        }
-    },1000)
-}
-
 meditationMinute.restart = () => {
     const restartButton = document.querySelector(".restart");
     restartButton.addEventListener("click", () => {
         window.location.reload(); 
     });
-};
-
-meditationMinute.updateQuoteContent = () => {
-    const quoteElement = document.querySelector(".quote");
-    const authorElement = document.querySelector(".author");
-    quoteElement.innerHTML = `"${meditationMinute.quoteContent}"`;
-    authorElement.innerHTML = `- ${meditationMinute.quoteAuthor}`;
 };
 
 meditationMinute.updateArtContent = () => {
@@ -76,115 +50,119 @@ meditationMinute.updateArtContent = () => {
     `;
 };
 
+meditationMinute.updateQuoteContent = () => {
+    const quoteElement = document.querySelector(".quote");
+    const authorElement = document.querySelector(".author");
+    quoteElement.innerHTML = `"${meditationMinute.quoteContent}"`;
+    authorElement.innerHTML = `- ${meditationMinute.quoteAuthor}`;
+};
+
+meditationMinute.timerDisplay = (currentTime) => {
+    // const h2Element = document.querySelector("h2");
+    // if (currentTime <= 9) {
+    //     h2Element.innerHTML = `00:0${currentTime}`;
+    // } else {
+    //     h2Element.innerHTML = `00:${currentTime}`;
+    // }
+    const h2Element = document.querySelector("h2");
+    if (currentTime.toString().length == 1) {
+        h2Element.innerHTML = `00:0${currentTime}`;
+    } else {
+        h2Element.innerHTML = `00:${currentTime}`;
+    }
+}
+
+meditationMinute.timer = () => {
+   let currentTime = 60;
+   setInterval( function(){
+       if (currentTime <= 60){
+           currentTime--;
+           if (currentTime > 0) {
+               meditationMinute.timerDisplay(currentTime);
+           } else {
+               window.location.reload(); 
+           }
+       }
+   },1000)
+}
+
 meditationMinute.updateDisplayedContent = () => {
     const mainElement = document.querySelector("main");
     mainElement.innerHTML = `
-    <header>
-        <h2>1:00</h2>
-        <button class="restart">
-            <i class="fa-solid fa-clock-rotate-left"></i>
-        </button>
-    </header>
-    <section class="quote-img">
-        <div class="quote-author">
-            <p class="quote">"Beat the drum inside the house to spare the neighbors."</p>
-            <p class="author">- Chinese Proverb</p>
-        </div>
-        <div class="art-img">
-            <img src="./assets/starry-night.jpg" alt="Starry Night">
-        </div>
-    </section>
-    <div class="img-credit">
-        <p><span>Starry Night</span>Vincent Van Gogh</p>
-    </div> 
+        <header>
+            <h2>1:00</h2>
+            <button class="restart">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+        </header>
+        <section class="quote-img">
+            <div class="quote-author">
+                <p class="quote">"Beat the drum inside the house to spare the neighbors."</p>
+                <p class="author">- Chinese Proverb</p>
+            </div>
+            <div class="art-img">
+                <img src="./assets/starry-night.jpg" alt="Starry Night">
+            </div>
+        </section>
+        <div class="img-credit">
+            <p><span>Starry Night</span>Vincent Van Gogh</p>
+        </div> 
         `
-        meditationMinute.timer();
+    meditationMinute.timer();
+}
+        
+meditationMinute.startButtonListener = () => {
+    const startButton = document.querySelector(".start");
+    startButton.addEventListener("click", () => {
+        meditationMinute.updateDisplayedContent();
+        meditationMinute.updateArtContent();
+        meditationMinute.updateQuoteContent();
+        meditationMinute.restart();
+    })
 }
 
 //API call to Rjiks Art Images
 meditationMinute.getArtPromise = async function getArt(){
-            const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
-
-            const apiKey = "aw5uplA6";
-            url.search = new URLSearchParams({
-            key: apiKey,
-            p: 100,
-            ps: 100,
-            imgonly: true,
-            });
-    
-            const res = await fetch (url);
-            const data = await res.json();
-
-            return data;
-        }
+    const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
+    const apiKey = "aw5uplA6";
+    url.search = new URLSearchParams({
+    key: apiKey,
+    p: 100,
+    ps: 100,
+    imgonly: true,
+    q: "painting",
+    });
+    const res = await fetch (url);
+    const data = await res.json();
+    return data;
+}
 
 //API call to Zen Quotes
 meditationMinute.getQuotePromise = async function getQuote(){
-        const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
+    const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
+    const res = await fetch (url);
+    const data = await res.json();
+    return data;
+}
 
-        const res = await fetch (url);
-        const data = await res.json();
-
-        return data;
-    }
-
-Promise.all([meditationMinute.getQuotePromise(), meditationMinute.getArtPromise()])
-.then((res)=>{
-    console.log(res);
-
-    // Get Quote Information 
-    meditationMinute.quoteContent = res[0][0].q;
-    meditationMinute.quoteAuthor = res[0][0].a;
-
-    // Get Art Info
-    const randomArt = meditationMinute.getRandomItemInArr(res[1].artObjects);
-    console.log(randomArt);
-    meditationMinute.artImage = randomArt.webImage.url;
-    meditationMinute.artTitle = randomArt.title;
-    meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-    meditationMinute.updateDisplayedContent();
-     meditationMinute.updateArtContent();
-            meditationMinute.updateQuoteContent();
-        })
-        
-        meditationMinute.homeButtonListener = () => {
-            const homeButton = document.querySelector(".home");
-            homeButton.addEventListener("click",meditationMinute.restart())
-        // setTimeout(function(){
-        //     // meditationMinute.updateArtContent();
-        //     // meditationMinute.updateQuoteContent();
-        // }, 1000);
+//Initializes all API Calls
+meditationMinute.apiCalls = () => {
+    Promise.all([meditationMinute.getQuotePromise(), meditationMinute.getArtPromise()])
+    .then((res)=>{
+        // Get Quote Information 
+        meditationMinute.quoteContent = res[0][0].q;
+        meditationMinute.quoteAuthor = res[0][0].a;
+        // Get Art Info
+        const randomArt = meditationMinute.getRandomItemInArr(res[1].artObjects);
+        meditationMinute.artImage = randomArt.webImage.url;
+        meditationMinute.artTitle = randomArt.title;
+        meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+        meditationMinute.startButtonListener();
+    })
 }
 
 meditationMinute.init = () => {
-    meditationMinute.getQuotePromise();
-    meditationMinute.getArtPromise();
-    meditationMinute.homeButtonListener();
+    meditationMinute.apiCalls();
 };
 
 meditationMinute.init();
-
-
-
-// Rjiks Museum Info
-// meditationMinute.getArt = () => {
-//     const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
-//     const apiKey = "aw5uplA6";
-//     url.search = new URLSearchParams({
-//     key: apiKey,
-//     p: 100,
-//     ps: 100,
-//     imgonly: true,
-//     })
-    
-//     async function getFromAPI() {
-//             const respo = await fetch(url);
-//             const artArr = await respo.json();
-//             const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
-//             meditationMinute.artImage = randomArt.webImage.url;
-//             meditationMinute.artTitle = randomArt.title;
-//             meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-//     }
-//     getFromAPI();
-// };
