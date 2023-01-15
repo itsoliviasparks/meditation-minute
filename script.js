@@ -102,55 +102,89 @@ meditationMinute.updateDisplayedContent = () => {
 }
 
 //API call to Rjiks Art Images
-meditationMinute.getArt = () => {
-    const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
-    const apiKey = "aw5uplA6";
-    url.search = new URLSearchParams({
-    key: apiKey,
-    p: 100,
-    ps: 100,
-    imgonly: true,
-    })
+meditationMinute.getArtPromise = async function getArt(){
+            const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
+
+            const apiKey = "aw5uplA6";
+            url.search = new URLSearchParams({
+            key: apiKey,
+            p: 100,
+            ps: 100,
+            imgonly: true,
+            });
     
-    async function getFromAPI() {
-            const respo = await fetch(url);
-            const artArr = await respo.json();
-            const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
-            meditationMinute.artImage = randomArt.webImage.url;
-            meditationMinute.artTitle = randomArt.title;
-            meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-    }
-    getFromAPI();
-};
+            const res = await fetch (url);
+            const data = await res.json();
+
+            return data;
+        }
 
 //API call to Zen Quotes
-meditationMinute.getQuote = () => {
-    const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
-    async function getFromAPI() {
-            const respo = await fetch(url);
-            const quote = await respo.json();
-            meditationMinute.quoteContent = quote[0].q;
-            meditationMinute.quoteAuthor = quote[0].a;
-    }
-    getFromAPI();
-}
+meditationMinute.getQuotePromise = async function getQuote(){
+        const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
 
-meditationMinute.homeButtonListener = () => {
-    const homeButton = document.querySelector(".home");
-    homeButton.addEventListener("click", () => {
-        setTimeout(function(){
-            meditationMinute.updateDisplayedContent();
-            meditationMinute.updateArtContent();
+        const res = await fetch (url);
+        const data = await res.json();
+
+        return data;
+    }
+
+Promise.all([meditationMinute.getQuotePromise(), meditationMinute.getArtPromise()])
+.then((res)=>{
+    console.log(res);
+
+    // Get Quote Information 
+    meditationMinute.quoteContent = res[0][0].q;
+    meditationMinute.quoteAuthor = res[0][0].a;
+
+    // Get Art Info
+    const randomArt = meditationMinute.getRandomItemInArr(res[1].artObjects);
+    console.log(randomArt);
+    meditationMinute.artImage = randomArt.webImage.url;
+    meditationMinute.artTitle = randomArt.title;
+    meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+    meditationMinute.updateDisplayedContent();
+     meditationMinute.updateArtContent();
             meditationMinute.updateQuoteContent();
-            meditationMinute.restart();
-        }, 1000);
-    })
+        })
+        
+        meditationMinute.homeButtonListener = () => {
+            const homeButton = document.querySelector(".home");
+            homeButton.addEventListener("click",meditationMinute.restart())
+        // setTimeout(function(){
+        //     // meditationMinute.updateArtContent();
+        //     // meditationMinute.updateQuoteContent();
+        // }, 1000);
 }
 
 meditationMinute.init = () => {
-    meditationMinute.getQuote();
-    meditationMinute.getArt();
+    meditationMinute.getQuotePromise();
+    meditationMinute.getArtPromise();
     meditationMinute.homeButtonListener();
 };
 
 meditationMinute.init();
+
+
+
+// Rjiks Museum Info
+// meditationMinute.getArt = () => {
+//     const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
+//     const apiKey = "aw5uplA6";
+//     url.search = new URLSearchParams({
+//     key: apiKey,
+//     p: 100,
+//     ps: 100,
+//     imgonly: true,
+//     })
+    
+//     async function getFromAPI() {
+//             const respo = await fetch(url);
+//             const artArr = await respo.json();
+//             const randomArt = meditationMinute.getRandomItemInArr(artArr.artObjects);
+//             meditationMinute.artImage = randomArt.webImage.url;
+//             meditationMinute.artTitle = randomArt.title;
+//             meditationMinute.artMaker = randomArt.principalOrFirstMaker;
+//     }
+//     getFromAPI();
+// };
