@@ -261,6 +261,10 @@ button:hover, button:focus {
   color: #18647a;
 }
 
+header button {
+  font-size: 3.5rem;
+}
+
 p {
   color: #1c1c1c;
   font-family: "Overpass", Sans-Serif;
@@ -309,7 +313,7 @@ footer p a:hover, footer p a:focus {
   width: 70%;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 7vh;
   padding: 40px 25px;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   background-color: #e6f1e6;
@@ -325,13 +329,15 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 35%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 img {
   display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   max-height: 60vh;
   margin-top: 35px;
