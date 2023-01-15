@@ -18,6 +18,8 @@ button {
     }
 }
 
+h2 {margin-right: 10px;}
+
 button {
     border: none;
     background-color: transparent;
@@ -33,9 +35,10 @@ p {
     color: $black;
     font-family: $body-font;
     font-size: 1.5rem;
+    span {font-weight: 600;}
 }
 
-.quote {
+.quote-author {
     p:nth-child(1){
         font-size: 3rem;
         font-weight: 600;

@@ -246,6 +246,10 @@ button span {
   display: block;
 }
 
+h2 {
+  margin-right: 10px;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -262,14 +266,17 @@ p {
   font-family: "Overpass", Sans-Serif;
   font-size: 1.5rem;
 }
+p span {
+  font-weight: 600;
+}
 
-.quote p:nth-child(1) {
+.quote-author p:nth-child(1) {
   font-size: 3rem;
   font-weight: 600;
   font-style: italic;
   margin-bottom: 0;
 }
-.quote p:nth-child(2) {
+.quote-author p:nth-child(2) {
   font-size: 2rem;
 }
 
@@ -339,7 +346,7 @@ img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.quote-img .quote {
+.quote-img .quote-author {
   position: absolute;
   z-index: 1;
   top: 15vh;
@@ -368,13 +375,13 @@ button {
   p {
     font-size: 1.2rem;
   }
-  .quote p:nth-child(1) {
+  .quote-author p:nth-child(1) {
     font-size: 2rem;
   }
-  .quote p:nth-child(2) {
+  .quote-author p:nth-child(2) {
     font-size: 1.5rem;
   }
-  .quote-img .quote {
+  .quote-img .quote-author {
     top: 10vh;
   }
 }
@@ -391,10 +398,10 @@ button {
   .wrapper {
     width: 85%;
   }
-  .quote p:nth-child(1) {
+  .quote-author p:nth-child(1) {
     font-size: 1.5rem;
   }
-  .quote p:nth-child(2) {
+  .quote-author p:nth-child(2) {
     font-size: 1rem;
   }
 }
