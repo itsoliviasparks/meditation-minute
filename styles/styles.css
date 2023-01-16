@@ -336,8 +336,8 @@ header {
 
 img {
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   width: 100%;
   max-height: 60vh;
   margin-top: 35px;
