@@ -1,4 +1,4 @@
-# Meditation Minute
+# Meditation Minute ⏳
 <a href="https://meditiation-minute.netlify.app">Live Site</a>
 
 ## About
