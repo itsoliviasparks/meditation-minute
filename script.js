@@ -104,6 +104,13 @@ meditationMinute.updateDisplayedContent = () => {
         `
     meditationMinute.timer();
 }
+
+meditationMinute.displayApiError = () => {
+    const mainElement = document.querySelector("main");
+    const errorMessage = document.createElement("h3");
+    errorMessage.textContent = "Unfortunately, we are unable to manifest meditation content. Please try again soon.";
+    mainElement.append(errorMessage);
+}
         
 meditationMinute.startButtonListener = () => {
     const startButton = document.querySelector(".start");
@@ -133,7 +140,7 @@ meditationMinute.getArtPromise = async function getArt(){
 
 //API call to Zen Quotes
 meditationMinute.getQuotePromise = async function getQuote(){
-    const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
+    const url = "https://proxy.junocollege.com/https://zenquotes.io/api/random/"
     const res = await fetch (url);
     const data = await res.json();
     return data;
@@ -152,6 +159,8 @@ meditationMinute.apiCalls = () => {
         meditationMinute.artTitle = randomArt.title;
         meditationMinute.artMaker = randomArt.principalOrFirstMaker;
         meditationMinute.startButtonListener();
+    }).catch(() => {
+        meditationMinute.displayApiError();
     })
 }
 
