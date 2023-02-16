@@ -3,7 +3,7 @@
 
 ## About
 Sometimes you just need to take a minute & have a breather. Never meditated before? Don't worry! All the heavy meditation lifting is done for you with this app.
-Meditation Minute utilizes two APIs to fetch and display data in response to user interaction. This is a Paired Programing project between <a href="https://github.com/rselvasoyak">Rana Soyak</a> & <a href="https://github.com/itsoliviasparks">Olivia Sparks</a>.
+Meditation Minute utilizes two APIs to fetch and display data in response to user interaction. This is a Paired Programing project between myself & <a href="https://github.com/rselvasoyak">Rana Soyak</a>.
 
 ## Features
 - This project was created as an exercise in collecting user input, fetching data from APIs & manipulating the DOM with vanilla JavaScript
