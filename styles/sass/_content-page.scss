@@ -1,38 +1,45 @@
 @use "var" as *;
 
-header{
-    display: flex;
-    align-items: center;
+section.meditation {
+    background-color: $black;
+    border-radius: 130px;
+    margin-top: 30px;
+    padding: 45px;
 }
 
-img {
-    display: block;
-    object-fit: contain;
-    width: 100%;
-    max-height: 60vh;
-    margin-top: 35px;
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .quote-img {
     position: relative;
     display: flex;
     justify-content: center;
-    .quote-author {
+    img {
+        display: block;
+        object-fit: contain;
+        width: 100%;
+        max-height: 50vh;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+    .quote-text {
         position: absolute;
         z-index: 1;
-        top: 15vh;
+        top: 30px;
         width: 90%;
-        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-        background-color: $quote-background;
-        text-align: center;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: $off-white-opaque;
     }
-}
-
-.img-credit {
-    z-index: 2;
-    width: 80%;
-    margin-top: -10px;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    background-color: $artist-background;
-    text-align: center;
+    .img-credit {
+        z-index: 2;
+        width: 80%;
+        margin-top: -45px;
+        border-radius: 100px;
+        padding: 10px;
+        background-color: $pink;
+    }
 }
