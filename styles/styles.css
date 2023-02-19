@@ -275,7 +275,7 @@ h2 {
 
 h3 {
   margin: 0;
-  color: rgb(195, 158, 158);
+  color: rgb(153, 113, 121);
   font-family: "Viaoda Libre", serif;
   font-size: 3rem;
   text-align: center;
@@ -536,6 +536,9 @@ header {
   }
 }
 @media (max-width: 900px) {
+  h3 {
+    font-size: 2.5rem;
+  }
   .h1-background {
     width: 65%;
   }
@@ -543,6 +546,9 @@ header {
 @media (max-width: 768px) {
   .wrapper {
     width: 85%;
+  }
+  h3 {
+    font-size: 2.2rem;
   }
   .h1-background {
     width: 63%;
@@ -583,6 +589,9 @@ header {
   }
 }
 @media (max-width: 480px) {
+  .h1-background {
+    width: 85%;
+  }
   h1 {
     font-size: 3rem;
   }
