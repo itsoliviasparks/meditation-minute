@@ -6,9 +6,9 @@ Sometimes you just need to take a minute & have a breather. Never meditated befo
 
 Meditation Minute utilizes two APIs to fetch and display data in response to user interaction.
 
-## Paired Programing
-- This is a paired programing project between myself & <a href="https://github.com/rselvasoyak">Rana Soyak</a>.
-- This repo contains updates I have implemented individually, to see our original paired programing work, <a href="https://github.com/olivia-rana/meditation-minute">click here</a>.
+## Paired Programming
+- This is a paired programming project between myself & <a href="https://github.com/rselvasoyak">Rana Soyak</a>.
+- This repo contains updates I have implemented individually, to see our original paired programming work, <a href="https://github.com/olivia-rana/meditation-minute">click here</a>.
 
 ## Features
 - This project was created as an exercise in collecting user input, fetching data from APIs & manipulating the DOM with vanilla JavaScript
