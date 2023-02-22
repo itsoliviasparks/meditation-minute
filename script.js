@@ -38,7 +38,8 @@ meditationMinute.restart = () => {
 
 meditationMinute.updateDisplayedContent = (quote, author, title, artist, imgLink) => {
     const mainElement = document.querySelector("main");
-    mainElement.innerHTML = `
+    mainElement.innerHTML = "";
+    mainElement.insertAdjacentHTML("beforeend",`
         <section class="meditation">
             <header>
                 <h2>1:00</h2>
@@ -59,7 +60,7 @@ meditationMinute.updateDisplayedContent = (quote, author, title, artist, imgLink
             </div> 
             </section>
         </section>
-        `
+        `);
     meditationMinute.timer();
 }
 
@@ -87,7 +88,7 @@ meditationMinute.turnOffLoading = () => {
 
 // API Call for Art Institute of Chicago
 // https://api.artic.edu/docs/#iiif-image-api
-meditationMinute.getArtPromise = async function getArt() {
+meditationMinute.getArtPromise = async () => {
     //get 100 impressionist art objects from API
     const url = "https://api.artic.edu/api/v1/artworks/search?q=impressionism&page=1&limit=100";
     const res = await fetch(url);
@@ -111,7 +112,7 @@ meditationMinute.getArtPromise = async function getArt() {
 
 //API call to Zen Quotes
 // https://zenquotes.io
-meditationMinute.getQuotePromise = async function getQuote() {
+meditationMinute.getQuotePromise = async () => {
     const url = "https://proxy.junocollege.com/https://zenquotes.io/api/random/"
     const res = await fetch(url);
     const data = await res.json();
