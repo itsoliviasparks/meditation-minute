@@ -133,7 +133,7 @@ meditationMinute.getArtPromise = async function getArt(){
 
 //API call to Zen Quotes
 meditationMinute.getQuotePromise = async function getQuote(){
-    const url = "https://proxy-ugwolsldnq-uc.a.run.app/https://zenquotes.io/api/random/"
+    const url = "https://proxy.junocollege.com/https://zenquotes.io/api/random/"
     const res = await fetch (url);
     const data = await res.json();
     return data;
