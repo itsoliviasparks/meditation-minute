@@ -1,21 +1,37 @@
 @use "var" as *;
 
-.wrapper {
+.h1-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    aspect-ratio: 1/1;
+    margin: 15px;
+    border-radius: 50%;
+    background-color: $black;
+    h1 { width: 70%; }
+}
+
+.start {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 7vh;
-    padding: 40px 25px;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    background-color: $content-background;
-}
-
-footer {
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
+    aspect-ratio: 1/1;
+    margin-top: 15px;
+    border-radius: 50%;
+    background-color: $black;
+    animation: pulse 3s ease-in-out infinite alternate;
+    i {
+        color: $off-white;
+        animation: rotate 4s infinite linear;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+    }
+    @keyframes pulse {
+        from { width: 125px; }
+        to { width: 105px; }
+      }
 }

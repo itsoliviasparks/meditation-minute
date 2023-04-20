@@ -1,31 +1,65 @@
 @use "var" as *;
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 768px) {
-    h1,
-    h2,
-    button {
-    font-size: 5rem;
+//small desktops
+@media (max-width: 1085px) {
+    .h1-background { width: 50%; }
+    h2 { font-size: 5.5rem; }
+    .quote-text {
+        p:nth-child(1){ font-size: 2rem; }
+        p:nth-child(2) { font-size: 1.7rem; }
     }
-    p {font-size: 1.2rem;}
-    .quote-author {
-        p:nth-child(1){font-size: 2rem;}
-        p:nth-child(2) {font-size: 1.5rem;}
-    }
-    .quote-img .quote-author {top: 10vh;}
+    .img-credit p { font-size: 1.7rem };
+    button { font-size: 3rem; }
+    button.start { font-size: 2rem; }
+    .start { 
+        i { font-size: 2rem; }
+        @keyframes pulse {
+            from { width: 115px; }
+            to { width: 95px; }
+          }
+     }
 }
 
-/* Landscape phones and down */
-@media (max-width: 480px) {
-    h1,
-    h2,
-    button {
-    font-size: 4.5rem;
-    }
-    p {font-size: 1rem;}
+@media (max-width: 900px) {
+    h3 { font-size: 2.5rem; }
+    .h1-background { width: 65%; }
+}
+
+//landscape phone to portrait tablet
+@media (max-width: 768px) {
     .wrapper {width: 85%;}
-    .quote-author {
-        p:nth-child(1){font-size: 1.5rem;}
-        p:nth-child(2) {font-size: 1rem;}
+    h3 { font-size: 2.2rem; }
+    .h1-background { width: 63%; }
+}
+
+// landscape phones
+@media (max-width: 580px) {
+    h1 { font-size: 3.7rem; }
+    h2 { font-size: 5rem; }
+    .h1-background { width: 70%; }
+    section.meditation {
+        padding: 25px;
+        border-radius: 10px;
     }
+    .quote-img .img-credit {
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .quote-img img { max-height: 65vh; }
+    .quote-text {
+        p:nth-child(1){ font-size: 1.7rem;}
+        p:nth-child(2) { font-size: 1.5rem; }
+    }
+    .img-credit p { font-size: 1.5rem };
+}
+
+//small landscape phones and down
+@media (max-width: 480px) {
+    .h1-background { width: 85%; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 4rem; }
+    .quote-img .quote-text { top: 15px }
 }
