@@ -228,75 +228,16 @@ html {
 
 html {
   font-size: 62.5%;
-  background-color: #d3d5c9;
-}
-
-h1,
-h2,
-button {
-  margin: 0;
-  color: #18647a;
-  font-family: "Permanent Marker", Cursive;
-  font-size: 5.5rem;
-  text-align: center;
-}
-h1 span,
-h2 span,
-button span {
-  display: block;
-}
-
-h2 {
-  margin-right: 10px;
-}
-
-button {
-  border: none;
-  background-color: transparent;
-  color: #6db8bb;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-button:hover, button:focus {
-  color: #18647a;
-}
-
-header button {
-  font-size: 3.5rem;
-}
-
-p {
-  color: #1c1c1c;
-  font-family: "Overpass", Sans-Serif;
-  font-size: 1.5rem;
-}
-p span {
-  font-weight: 600;
-}
-
-.quote-author p:nth-child(1) {
-  font-size: 3rem;
-  font-weight: 600;
-  font-style: italic;
-  margin-bottom: 0;
-}
-.quote-author p:nth-child(2) {
-  font-size: 2rem;
-}
-
-footer p {
-  color: #959593;
-  font-size: 1.2rem;
-  font-style: italic;
-}
-footer p a {
-  color: #959593;
-}
-footer p a:hover, footer p a:focus {
-  color: #1c1c1c;
+  background-color: rgb(246, 240, 241);
 }
 
 .wrapper {
+  width: 70%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -310,37 +251,210 @@ footer p a:hover, footer p a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 70%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 7vh;
-  padding: 40px 25px;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  background-color: #e6f1e6;
 }
 
-footer {
-  position: absolute;
-  bottom: 5px;
-  right: 15px;
+main {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+button {
+  padding: 20px;
+  margin: 0;
+  color: rgb(246, 240, 241);
+  font-family: "Viaoda Libre", serif;
+  font-size: 4.5rem;
+  text-align: center;
+}
+
+h2 {
+  padding: 0;
+  font-size: 6.5rem;
+}
+
+h3 {
+  margin: 0;
+  color: rgb(153, 113, 121);
+  font-family: "Viaoda Libre", serif;
+  font-size: 3rem;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background-color: rgb(45, 45, 43);
+  font-size: 3.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+button:hover, button:focus {
+  color: rgb(195, 158, 158);
+}
+
+button.start {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(246, 240, 241);
+  font-size: 2.2rem;
+  background-color: transparent;
+}
+button.start span {
+  display: block;
+}
+button.start:hover, button.start:focus {
+  color: rgb(195, 158, 158);
+}
+
+button.restart:hover, button.restart:focus {
+  rotate: -180deg;
+}
+
+p {
+  color: rgb(45, 45, 43);
+  font-family: "Italiana", serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+p span {
+  display: block;
+  font-weight: 600;
+}
+
+.start i {
+  font-size: 2.7rem;
+}
+
+.quote-text p:nth-child(1) {
+  margin-bottom: 0;
+  font-size: 2.7rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.quote-text p:nth-child(2) {
+  font-size: 2.2rem;
+}
+
+.img-credit p {
+  font-size: 2rem;
+}
+
+footer p {
+  color: rgb(45, 45, 43);
+  font-size: 1.2rem;
+}
+footer p a {
+  color: rgb(45, 45, 43);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+footer p a:hover, footer p a:focus {
+  color: rgb(195, 158, 158);
+}
+
+.h1-background {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 45%;
+  aspect-ratio: 1/1;
+  margin: 15px;
+  border-radius: 50%;
+  background-color: rgb(45, 45, 43);
+}
+.h1-background h1 {
+  width: 70%;
+}
+
+.start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  aspect-ratio: 1/1;
+  margin-top: 15px;
+  border-radius: 50%;
+  background-color: rgb(45, 45, 43);
+  -webkit-animation: pulse 3s ease-in-out infinite alternate;
+          animation: pulse 3s ease-in-out infinite alternate;
+}
+.start i {
+  color: rgb(246, 240, 241);
+  -webkit-animation: rotate 4s infinite linear;
+          animation: rotate 4s infinite linear;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pulse {
+  from {
+    width: 125px;
+  }
+  to {
+    width: 105px;
+  }
+}
+@keyframes pulse {
+  from {
+    width: 125px;
+  }
+  to {
+    width: 105px;
+  }
+}
+
+section.meditation {
+  background-color: rgb(45, 45, 43);
+  border-radius: 130px;
+  margin-top: 30px;
+  padding: 45px;
 }
 
 header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-img {
-  display: block;
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 100%;
-  max-height: 60vh;
-  margin-top: 35px;
 }
 
 .quote-img {
@@ -352,62 +466,139 @@ img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.quote-img .quote-author {
+.quote-img img {
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  max-height: 50vh;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.quote-img .quote-text {
   position: absolute;
   z-index: 1;
-  top: 15vh;
+  top: 30px;
   width: 90%;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  background-color: rgba(230, 241, 230, 0.6);
-  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(246, 240, 241, 0.6);
 }
-
-.img-credit {
+.quote-img .img-credit {
   z-index: 2;
   width: 80%;
-  margin-top: -10px;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  background-color: #959593;
-  text-align: center;
+  margin-top: -45px;
+  border-radius: 100px;
+  padding: 10px;
+  background-color: rgb(195, 158, 158);
 }
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 768px) {
-  h1,
-h2,
-button {
-    font-size: 5rem;
+@media (max-width: 1085px) {
+  .h1-background {
+    width: 50%;
   }
-  p {
-    font-size: 1.2rem;
+  h2 {
+    font-size: 5.5rem;
   }
-  .quote-author p:nth-child(1) {
+  .quote-text p:nth-child(1) {
     font-size: 2rem;
   }
-  .quote-author p:nth-child(2) {
-    font-size: 1.5rem;
+  .quote-text p:nth-child(2) {
+    font-size: 1.7rem;
   }
-  .quote-img .quote-author {
-    top: 10vh;
+  .img-credit p {
+    font-size: 1.7rem;
+  }
+  button {
+    font-size: 3rem;
+  }
+  button.start {
+    font-size: 2rem;
+  }
+  .start i {
+    font-size: 2rem;
+  }
+  @-webkit-keyframes pulse {
+    from {
+      width: 115px;
+    }
+    to {
+      width: 95px;
+    }
+  }
+  @keyframes pulse {
+    from {
+      width: 115px;
+    }
+    to {
+      width: 95px;
+    }
   }
 }
-/* Landscape phones and down */
-@media (max-width: 480px) {
-  h1,
-h2,
-button {
-    font-size: 4.5rem;
+@media (max-width: 900px) {
+  h3 {
+    font-size: 2.5rem;
   }
-  p {
-    font-size: 1rem;
+  .h1-background {
+    width: 65%;
   }
+}
+@media (max-width: 768px) {
   .wrapper {
     width: 85%;
   }
-  .quote-author p:nth-child(1) {
+  h3 {
+    font-size: 2.2rem;
+  }
+  .h1-background {
+    width: 63%;
+  }
+}
+@media (max-width: 580px) {
+  h1 {
+    font-size: 3.7rem;
+  }
+  h2 {
+    font-size: 5rem;
+  }
+  .h1-background {
+    width: 70%;
+  }
+  section.meditation {
+    padding: 25px;
+    border-radius: 10px;
+  }
+  .quote-img .img-credit {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .quote-img img {
+    max-height: 65vh;
+  }
+  .quote-text p:nth-child(1) {
+    font-size: 1.7rem;
+  }
+  .quote-text p:nth-child(2) {
     font-size: 1.5rem;
   }
-  .quote-author p:nth-child(2) {
-    font-size: 1rem;
+  .img-credit p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .h1-background {
+    width: 85%;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 4rem;
+  }
+  .quote-img .quote-text {
+    top: 15px;
   }
 }
