@@ -1,61 +1,10 @@
-//on page load 
-    // API call to Rjiks
-        //save random art image in variable
-        //save that image's title & artist in separate variable
-    //API call to quotes
-        //save random quote in variable
-        //save quote author in variable
-    //set up event listener to button on homepage
-        //remove homepage text from screen
-        //display new page content
-            //add timer of 1min to top of page
-                //when timer runs out, go back to home page
-            //add restart button to top of page
-                // event listener to restart page when clicked
-            //add image to page
-                //add title & artist to page
-            //add quote to page
-                //add author to page
-
-    // On content page load - the timer starts
-    // timer starts at 1:00 minute 
-    // Every second - the timer count goes down 
-    //The current time gets displayed on screen 
-    //After the display - the timer count goes down again 
-    // When count hits 0 - the timer stops 
-    // The reset button can refresh the timer back to its original state - 1:00 minute 
-
-const meditationMinute = {}; 
+const meditationMinute = {};
 
 meditationMinute.getRandomItemInArr = (arr) => {
     const randomNumber = Math.floor(Math.random() * arr.length)
     return arr[randomNumber];
 };
 
-meditationMinute.restart = () => {
-    const restartButton = document.querySelector(".restart");
-    restartButton.addEventListener("click", () => {
-        window.location.reload(); 
-    });
-};
-
-meditationMinute.updateArtContent = () => {
-    const artImgElement = document.querySelector(".art-img");
-    const imgCreditElement = document.querySelector(".img-credit");
-    artImgElement.innerHTML = `
-    <img src="${meditationMinute.artImage}" alt="${meditationMinute.artTitle}">
-    `;
-    imgCreditElement.innerHTML = `
-    <p><span>${meditationMinute.artTitle}</span> by ${meditationMinute.artMaker}</p>
-    `;
-};
-
-meditationMinute.updateQuoteContent = () => {
-    const quoteElement = document.querySelector(".quote");
-    const authorElement = document.querySelector(".author");
-    quoteElement.innerHTML = `"${meditationMinute.quoteContent}"`;
-    authorElement.innerHTML = `- ${meditationMinute.quoteAuthor}`;
-};
 
 meditationMinute.timerDisplay = (currentTime) => {
     const h2Element = document.querySelector("h2");
@@ -67,92 +16,126 @@ meditationMinute.timerDisplay = (currentTime) => {
 }
 
 meditationMinute.timer = () => {
-   let currentTime = 60;
-   setInterval( function(){
-       if (currentTime <= 60){
-           currentTime--;
-           if (currentTime > 0) {
-               meditationMinute.timerDisplay(currentTime);
-           } else {
-               window.location.reload(); 
-           }
-       }
-   },1000)
+    let currentTime = 60;
+    setInterval(function () {
+        if (currentTime <= 60) {
+            currentTime--;
+            if (currentTime > 0) {
+                meditationMinute.timerDisplay(currentTime);
+            } else {
+                window.location.reload();
+            }
+        }
+    }, 1000)
 }
 
-meditationMinute.updateDisplayedContent = () => {
+meditationMinute.restart = () => {
+    const restartButton = document.querySelector(".restart");
+    restartButton.addEventListener("click", () => {
+        window.location.reload();
+    });
+};
+
+meditationMinute.updateDisplayedContent = (quote, author, title, artist, imgLink) => {
     const mainElement = document.querySelector("main");
-    mainElement.innerHTML = `
-        <header>
-            <h2>1:00</h2>
-            <button class="restart">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-            </button>
-        </header>
-        <section class="quote-img">
-            <div class="quote-author">
-                <p class="quote">"Beat the drum inside the house to spare the neighbors."</p>
-                <p class="author">- Chinese Proverb</p>
-            </div>
-            <div class="art-img">
-                <img src="./assets/starry-night.jpg" alt="Starry Night">
-            </div>
+    mainElement.innerHTML = "";
+    mainElement.insertAdjacentHTML("beforeend",`
+        <section class="meditation">
+            <header>
+                <h2>1:00</h2>
+                <button class="restart" aria-label="restart">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </button>
+            </header>
+            <section class="quote-img">
+                <div class="quote-text">
+                    <p class="quote">"${quote}"</p>
+                    <p class="author">- ${author}</p>
+                </div>
+                <div class="art-img">
+                    <img src="${imgLink}" alt="${title} by ${artist}">
+                </div>
+                <div class="img-credit">
+                <p><span>${title}</span>${artist}</p>
+            </div> 
+            </section>
         </section>
-        <div class="img-credit">
-            <p><span>Starry Night</span>Vincent Van Gogh</p>
-        </div> 
-        `
+        `);
     meditationMinute.timer();
 }
-        
-meditationMinute.startButtonListener = () => {
+
+meditationMinute.displayApiError = () => {
+    const startButton = document.querySelector(".start");
+    const errorMessage1 = document.createElement("h3");
+    const errorMessage2 = document.createElement("h3");
+    errorMessage1.textContent = "Unfortunately, we are unable to manifest meditation content.";
+    errorMessage2.textContent = "Please try again soon.";
+    startButton.before(errorMessage1, errorMessage2);
+}
+
+meditationMinute.startButtonListener = (quote, author, title, artist, imgLink) => {
     const startButton = document.querySelector(".start");
     startButton.addEventListener("click", () => {
-        meditationMinute.updateDisplayedContent();
-        meditationMinute.updateArtContent();
-        meditationMinute.updateQuoteContent();
+        meditationMinute.updateDisplayedContent(quote, author, title, artist, imgLink);
         meditationMinute.restart();
     })
 }
 
-//API call to Rjiks Art Images
-meditationMinute.getArtPromise = async function getArt(){
-    const url = new URL("https://www.rijksmuseum.nl/api/en/collection");
-    const apiKey = "aw5uplA6";
-    url.search = new URLSearchParams({
-    key: apiKey,
-    p: 100,
-    ps: 100,
-    imgonly: true,
-    q: "painting",
-    });
-    const res = await fetch (url);
+meditationMinute.turnOffLoading = () => {
+    const start = document.querySelector(".start");
+    start.innerHTML = `<button class="start">Click<span>Here</span></button>`;
+};
+
+// API Call for Art Institute of Chicago
+// https://api.artic.edu/docs/#iiif-image-api
+meditationMinute.getArtPromise = async () => {
+    //get 100 impressionist art objects from API
+    const url = "https://api.artic.edu/api/v1/artworks/search?q=impressionism&page=1&limit=100";
+    const res = await fetch(url);
     const data = await res.json();
-    return data;
+    //get id of 1 random art object & save in randomArtId
+    const randomArt = await meditationMinute.getRandomItemInArr(data.data);
+    const randomArtId = await randomArt.id;
+    //search by randomArtId & save title & artist
+    const artUrl = `https://api.artic.edu/api/v1/artworks/${randomArtId}`;
+    const artRes = await fetch(artUrl);
+    const artData = await artRes.json();
+    const title = await artData.data.title;
+    const artist = await artData.data.artist_title;
+    //search by randomArtId & save imgLink
+    const imgUrl = `https://api.artic.edu/api/v1/artworks/${randomArtId}?fields=id,title,image_id`;
+    const imgRes = await fetch(imgUrl);
+    const imgData = await imgRes.json();
+    const imgLink = `${imgData.config.iiif_url}/${imgData.data.image_id}/full/843,/0/default.jpg`;
+    return [{ title: title }, { artist: artist }, { imgLink: imgLink }]
 }
 
 //API call to Zen Quotes
-meditationMinute.getQuotePromise = async function getQuote(){
+// https://zenquotes.io
+meditationMinute.getQuotePromise = async () => {
     const url = "https://proxy.junocollege.com/https://zenquotes.io/api/random/"
-    const res = await fetch (url);
+    const res = await fetch(url);
     const data = await res.json();
-    return data;
+    const quote = data[0].q;
+    const author = data[0].a;
+    return [{ quote: quote }, { author: author }]
 }
 
-//Initializes all API Calls
+//Initializes all API Calls & waits for promise before allowing user to click the start button & display the results
 meditationMinute.apiCalls = () => {
     Promise.all([meditationMinute.getQuotePromise(), meditationMinute.getArtPromise()])
-    .then((res)=>{
-        // Get Quote Information 
-        meditationMinute.quoteContent = res[0][0].q;
-        meditationMinute.quoteAuthor = res[0][0].a;
-        // Get Art Info
-        const randomArt = meditationMinute.getRandomItemInArr(res[1].artObjects);
-        meditationMinute.artImage = randomArt.webImage.url;
-        meditationMinute.artTitle = randomArt.title;
-        meditationMinute.artMaker = randomArt.principalOrFirstMaker;
-        meditationMinute.startButtonListener();
-    })
+        .then((res) => {
+            //saves results from each API call into variables to pass down to display updateDisplayedContent() via startButtonListener()
+            const quote = res[0][0].quote;
+            const author = res[0][1].author;
+            const title = res[1][0].title;
+            const artist = res[1][1].artist;
+            const imgLink = res[1][2].imgLink;
+            meditationMinute.turnOffLoading();
+            meditationMinute.startButtonListener(quote, author, title, artist, imgLink);
+        }).catch(() => {
+            meditationMinute.displayApiError();
+        })
 }
 
 meditationMinute.init = () => {
