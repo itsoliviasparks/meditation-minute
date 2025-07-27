@@ -1,5 +1,5 @@
 # Meditation Minute ⚫️
-<a href="https://itsoliviasparks-meditation-minute.netlify.app">🔗 Live Site</a>
+<a href="https://itsoliviasparks.github.io/meditation-minute/">🔗 Live Site</a>
 
 ## About
 Sometimes you just need to take a minute & have a breather. Never meditated before? Don't worry! All the heavy meditation lifting is done for you with this app.
